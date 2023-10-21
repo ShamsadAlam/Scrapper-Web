@@ -12,7 +12,9 @@ app.use(cors(corsOptions));
 
 app.get("/:query", async (req, res) => {
   keyword = req.params.query;
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless: "new",
+  });
   const page = await browser.newPage();
   const url = `https://www.google.com/search?q=${keyword}`;
   console.log("url: ", url);
